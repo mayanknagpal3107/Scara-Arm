@@ -1,0 +1,33 @@
+						SCARA ROBOTIC ARM (small)
+
+- All batteries must be full charged.
+- The robot will be reset if half or uncomplete command sent.
+
+----------------------------------------------------------------------------------------------------------
+SERIAL COMMANDS
+
+(NOTE : ALL VALUES ARE IN HEX... )
+
+>>	DATA PACKET Identifiers   =>>  0xFF.....data......0xFF    ( 0xFF - start and stop byte )
+
+>>	Instruction identifier    =>> 2nd byte of data packet
+
+
+
+1. To set servo speed (0 to 100) ;   (do not use...)
+
+	255, 100, servo1_speed, servo2_speed, 255  
+		
+		servo1_speed == 0 to 100
+		servo2_speed == 0 to 100
+		
+
+2. To set servo position (0 to 180) ;
+
+	255, 101,servo1_postion, servo2_postion, 255
+		
+	(all positions are in terms of DEGREES with reference to absolute zero position...)		
+
+		servo1_postion == 0 to 180
+		servo2_postion == 0 to 180
+----------------------------------------------------------------------------------------------------------

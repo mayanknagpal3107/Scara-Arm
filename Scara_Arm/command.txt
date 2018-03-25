@@ -1,0 +1,62 @@
+						SCARA ROBOTIC ARM (small)
+
+- All batteries must be full charged.
+- The robot will be reset if half or uncomplete command sent.
+
+SERIAL COMMANDS
+
+(NOTE : ALL VALUES ARE IN HEX... )
+
+>>	DATA PACKET Identifiers   =>>  0xFF.....data......0xFF    ( 0xFF - start and stop byte )
+
+>>	Instruction identifier    =>> 2nd byte of data packet
+
+
+
+1. To set servo speed (0 to 100) ;   (do not use...)
+
+	255, 100, servo1_speed, servo2_speed, 255  
+		
+		servo1_speed == 0 to 100
+		servo2_speed == 0 to 100
+		servo3_speed == 0 to 100
+
+
+2. To set servo position (0 to 180) ;
+
+	255, 101,servo1_postion, servo2_postion, 255
+		
+	(all positions are in terms of DEGREES with reference to absolute zero position...)		
+
+		servo1_postion == 0 to 180
+		servo2_postion == 0 to 180
+		servo3_postion == 0 to 180
+		
+
+3. To run dc motor
+	
+	255, 200, motor_num, direction, 255
+
+		motor_num =  1 to 2
+		
+		direction=1;//forward
+		direction=2;//reverse
+		direction=0;//stop
+
+	(NOTE : All directions are relative to DC Motor External Connections...)
+
+
+4. To set Speed of DC Motor
+
+	255, 201, % Duty_cycle, 255
+
+	(NOTE : to set the speed of perticular DC Motor... firstly run the DC required DC motor in Speed - STOP mode and then enter this command and finally 		run the DCF Motor in required direction.)
+
+
+5. To read ADC channel
+
+	255, 202, 255
+
+		202 - code for ADC read instruction...
+	
+	(NOTE : the value of ADC1 channel will be shown on UART...)
